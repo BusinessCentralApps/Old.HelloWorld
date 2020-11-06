@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "base"
+		},
+		{
+			"path": "app"
+		},
+		{
+			"path": "test"
+		},
+		{
+			"path": "scripts"
+		},
+		{
+			"path": ".github"
+		}
+	],
+	"settings": {}
+}
