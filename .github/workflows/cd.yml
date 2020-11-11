@@ -22,4 +22,4 @@ jobs:
           github_token: ${{secrets.GITHUB_TOKEN}}
           workflow: ci.yml
           workflow_conclusion: success
-          branch: master
+
