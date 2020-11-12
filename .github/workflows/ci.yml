@@ -68,7 +68,7 @@ jobs:
           path: output/testresults*.xml
           if-no-files-found: ignore
 
-      - name: Publish Artifacts - Test Results
+      - name: Publish Artifacts - Manifest
         uses: actions/upload-artifact@v2
         with:
           name: Manifest
