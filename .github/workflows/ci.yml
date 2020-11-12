@@ -29,7 +29,7 @@ jobs:
           InsiderSasToken: ${{ secrets.InsiderSasToken }}
           LicenseFile: ${{ secrets.LicenseFile }}
         run: |
-          . scripts\DevOps-Pipeline.ps1 -environment GitHubActions -version ${{env.version}} -appBuild ${{env.appBuild}} -appRevision ${{env.appRevision}}
+          . "scripts\DevOps-Pipeline.ps1" -environment GitHubActions -version ${{env.version}} -appBuild ${{env.appBuild}} -appRevision ${{env.appRevision}}
 
       - name: Publish Test Results
         uses: mikepenz/action-junit-report@v1
