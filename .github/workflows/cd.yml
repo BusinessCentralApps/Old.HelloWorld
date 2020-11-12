@@ -29,7 +29,7 @@ jobs:
         run: |
           $manifest = Get-Content "Manifest\manifest.json" | ConvertFrom-Json
           $appVersion = $manifest.Version
-          $projectName = "GitHub${{ github.event.repository.name }}-preview".ToLowerInvariant()
+          $projectName = "GitHub${{ github.event.repository.name }}-preview".Replace('.','-').ToLowerInvariant()
           $storageContext = New-AzureStorageContext -ConnectionString "${{ secrets.StorageConnectionString }}"
           New-AzureStorageContainer -Name $projectName -Context $storageContext -Permission "Container" -ErrorAction Ignore | Out-Null
           "RuntimePackages", "Apps", "TestApps" | % {
