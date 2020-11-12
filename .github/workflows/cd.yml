@@ -29,10 +29,8 @@ jobs:
         run: |
         $appVersion = "5"
         $projectName = "GitHubHelloWorld-preview".ToLowerInvariant()
-
         $storageContext = New-AzureStorageContext -ConnectionString "${{ secrets.StorageConnectionString }}"
         New-AzureStorageContainer -Name $projectName -Context $storageContext -Permission "Container" -ErrorAction Ignore | Out-Null
-
         "RuntimePackages", "Apps", "TestApps" | % {
           if (Test-Path "Artifacts\output\$_\*") {
             $tempFile = Join-Path ([System.IO.Path]::Gettemppath()) "$([Guid]::newguid().ToString()).zip"
