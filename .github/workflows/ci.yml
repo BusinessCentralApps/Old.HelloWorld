@@ -30,10 +30,6 @@ jobs:
           LicenseFile: ${{ secrets.LicenseFile }}
         run: scripts\DevOps-Pipeline.ps1 -environment GitHubActions -version ${{env.version}} -appBuild ${{env.appBuild}} -appRevision ${{env.appRevision}}
 
-      - name: Save manifest
-        run: |
-          @{ "Name" = "${{ github.event.repository.name }}"; "Version" = "${{env.version}}.${{env.appBuild}}.${{env.appRevision}}" } | ConvertTo-Json | Set-Content "output\manifest.json"
-
       - name: Publish Test Results
         uses: mikepenz/action-junit-report@v1
         with:
