@@ -27,12 +27,13 @@ jobs:
         env:
           StorageConnectionString: ${{ secrets.StorageConnectionString }}
         run: |
+          Disable-AzureDataCollection
           $appVersion = "5"
           $projectName = "GitHubHelloWorld-preview".ToLowerInvariant()
           $storageContext = New-AzureStorageContext -ConnectionString "${{ secrets.StorageConnectionString }}"
           New-AzureStorageContainer -Name $projectName -Context $storageContext -Permission "Container" -ErrorAction Ignore | Out-Null
           "RuntimePackages", "Apps", "TestApps" | % {
-            if (Test-Path "output\$_\*") {
+            if (Test-Path "$_\*") {
               $tempFile = Join-Path ([System.IO.Path]::Gettemppath()) "$([Guid]::newguid().ToString()).zip"
               Compress-Archive -path (Get-Item "Artifacts\output\$_").FullName -DestinationPath $tempFile
               Set-AzureStorageBlobContent -File $tempFile -Context $storageContext -Container $projectName -Blob "$appVersion/$_.zip".ToLowerInvariant() -Force
