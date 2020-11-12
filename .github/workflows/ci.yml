@@ -32,7 +32,7 @@ jobs:
 
       - name: Save manifest
         run: |
-          @{ "Name" = "${{ github.event.repository.name }}"; "Version" = "${{env.version}}.${{env.appBuild}}.${{env.appRevision}}" } | ConvertTo-Json | Set-Content "output\manifest.json"
+          @{ "Name" = "${{ github.event.repository.name }}"; "Version" = "${{env.appVersion}}.${{env.appBuild}}.${{env.appRevision}}" } | ConvertTo-Json | Set-Content "output\manifest.json"
 
       - name: Publish Test Results
         uses: mikepenz/action-junit-report@v1
