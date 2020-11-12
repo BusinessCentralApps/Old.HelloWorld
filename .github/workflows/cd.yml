@@ -27,8 +27,9 @@ jobs:
         env:
           StorageConnectionString: ${{ secrets.StorageConnectionString }}
         run: |
-          $appVersion = "5"
-          $projectName = "GitHubHelloWorld-preview".ToLowerInvariant()
+          $manifest = Get-Content "manifest.json" | ConvertFrom-Json
+          $appVersion = $manifest.Version
+          $projectName = "GitHub${{ github.event.repository.name }}-preview".ToLowerInvariant()
           $storageContext = New-AzureStorageContext -ConnectionString "${{ secrets.StorageConnectionString }}"
           New-AzureStorageContainer -Name $projectName -Context $storageContext -Permission "Container" -ErrorAction Ignore | Out-Null
           "RuntimePackages", "Apps", "TestApps" | % {
