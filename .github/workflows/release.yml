@@ -1,11 +1,6 @@
 name: CD
 
 on:
-  workflow_run:
-    workflows: ["CI"]
-    branches: [master]
-    types: 
-      - completed
   workflow_dispatch:
 
 defaults:
@@ -13,7 +8,7 @@ defaults:
     shell: PowerShell
 
 jobs:
-  Release to storage (preview):
+  Release to storage (prod):
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     runs-on: windows-latest
@@ -31,7 +26,7 @@ jobs:
         run: |
           $manifest = Get-Content "Manifest\manifest.json" | ConvertFrom-Json
           $appVersion = $manifest.Version
-          $projectName = "GitHub${{ github.event.repository.name }}-preview".Replace('.','-').ToLowerInvariant()
+          $projectName = "GitHub${{ github.event.repository.name }}".Replace('.','-').ToLowerInvariant()
           $storageContext = New-AzureStorageContext -ConnectionString "${{ secrets.StorageConnectionString }}"
           New-AzureStorageContainer -Name $projectName -Context $storageContext -Permission "Container" -ErrorAction Ignore | Out-Null
           "RuntimePackages", "Apps", "TestApps" | % {
