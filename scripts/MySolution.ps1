@@ -17,7 +17,7 @@ $replaceValues = @{
     "Default Base App Name" = "My Base App"
     "Default Test App Name" = "My Test App"
     "2.0.0.0" = "1.0.0.0"
-    "https://businesscentralapps.azureedge.net/helloworld/latest/apps.zip" = ""
+    "https://businesscentralapps.azureedge.net/githubhelloworld/latest/apps.zip" = ""
 } + $replaceObjectIds
 
 function ReplaceProperty { Param ($object, $property)
