@@ -70,6 +70,7 @@ Run-AlPipeline @params `
     -enableUICop:$enableUICop `
     -azureDevOps:($environment -eq 'AzureDevOps') `
     -gitLab:($environment -eq 'GitLab') `
+    -gitHubActions:($environment -eq 'GitHubActions') `
     -AppSourceCopMandatoryAffixes $appSourceCopMandatoryAffixes `
     -AppSourceCopSupportedCountries $appSourceCopSupportedCountries `
     -additionalCountries $additionalCountries `
