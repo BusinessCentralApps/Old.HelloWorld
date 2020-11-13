@@ -38,8 +38,10 @@ jobs:
             if (Test-Path "$_\*") {
               $tempFile = Join-Path ([System.IO.Path]::Gettemppath()) "$([Guid]::newguid().ToString()).zip"
               Compress-Archive -path (Get-Item $_).FullName -DestinationPath $tempFile
-              Set-AzureStorageBlobContent -File $tempFile -Context $storageContext -Container $projectName -Blob "$appVersion/$_.zip".ToLowerInvariant() -Force
-              Set-AzureStorageBlobContent -File $tempFile -Context $storageContext -Container $projectName -Blob "latest/$_.zip".ToLowerInvariant() -Force
+              Write-Host "$appVersion/$_.zip".ToLowerInvariant()
+              Set-AzureStorageBlobContent -File $tempFile -Context $storageContext -Container $projectName -Blob "$appVersion/$_.zip".ToLowerInvariant() -Force | Out-Null
+              Write-Host "latest/$_.zip".ToLowerInvariant()
+              Set-AzureStorageBlobContent -File $tempFile -Context $storageContext -Container $projectName -Blob "latest/$_.zip".ToLowerInvariant() -Force | Out-Null
               Remove-Item $tempFile -Force
             }
           }
