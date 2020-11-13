@@ -13,7 +13,7 @@ defaults:
     shell: PowerShell
 
 jobs:
-  Release_to_storage-Preview:
+  Release_to_storage:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     runs-on: windows-latest
