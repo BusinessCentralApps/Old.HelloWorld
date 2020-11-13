@@ -1,4 +1,4 @@
-name: CD
+name: Release
 
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ defaults:
     shell: PowerShell
 
 jobs:
-  Release to storage (prod):
+  Release_to_storage-Prod:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     runs-on: windows-latest
