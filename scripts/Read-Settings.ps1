@@ -64,6 +64,6 @@ if ($environment -eq 'AzureDevOps') {
 }
 
 $imageName = ""
-if ($cacheImage -and ("$AgentName" -ne "Hosted Agent" -and $agentName -ne "" -and "$AgentName" -notlike "Azure Pipelines*")) {
+if ($cacheImage -and ("$AgentName" -ne "Hosted Agent" -and "$agentName" -ne "" -and "$AgentName" -notlike "Azure Pipelines*")) {
     $imageName = "bcimage"
 }
