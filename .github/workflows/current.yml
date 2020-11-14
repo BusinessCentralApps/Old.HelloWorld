@@ -8,7 +8,7 @@ on:
 env:
   version: current
   appVersion: '2.0'
-  appBuild: ${{github.run_number}}
+  appBuild: 2147483647
   appRevision: 0
 
 defaults:
