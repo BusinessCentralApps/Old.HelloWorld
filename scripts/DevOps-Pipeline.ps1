@@ -71,6 +71,7 @@ Run-AlPipeline @params `
     -azureDevOps:($environment -eq 'AzureDevOps') `
     -gitLab:($environment -eq 'GitLab') `
     -gitHubActions:($environment -eq 'GitHubActions') `
+    -failOn 'error' `
     -AppSourceCopMandatoryAffixes $appSourceCopMandatoryAffixes `
     -AppSourceCopSupportedCountries $appSourceCopSupportedCountries `
     -additionalCountries $additionalCountries `
