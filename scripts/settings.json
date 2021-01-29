@@ -30,6 +30,11 @@
             "CreateRuntimePackages": true
         },
         {
+            "version": "cloud",
+            "artifact": "///us/Current",
+            "CreateRuntimePackages": true
+        },
+        {
             "version": "nextmajor",
             "artifact": "///us/NextMajor/{INSIDERSASTOKEN}"
         },
