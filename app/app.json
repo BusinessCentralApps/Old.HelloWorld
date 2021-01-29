@@ -12,7 +12,7 @@
     "logo":  "",
     "dependencies":  [
                          {
-                             "appId":  "00000000-0000-0000-0000-000000000003",
+                             "id":  "00000000-0000-0000-0000-000000000003",
                              "publisher":  "Default Publisher",
                              "name":  "Default Base App Name",
                              "version":  "2.0.0.0"
@@ -21,8 +21,8 @@
     "screenshots":  [
 
                     ],
-    "application":  "16.0.0.0",
-    "platform":  "16.0.0.0",
+    "application":  "17.0.0.0",
+    "platform":  "17.0.0.0",
     "idRanges":  [
                      {
                          "from":  50100,
@@ -30,5 +30,5 @@
                      }
                  ],
     "showMyCode":  true,
-    "runtime":  "4.0"
+    "runtime":  "6.0"
 }

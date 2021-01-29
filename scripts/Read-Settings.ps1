@@ -51,7 +51,7 @@ if ($environment -eq 'AzureDevOps') {
     Set-Variable -Name $_ -Value "$str"
 }
 
-"installTestFramework", "installTestLibraries", "installPerformanceToolkit", "enableCodeCop", "enableAppSourceCop", "enablePerTenantExtensionCop", "enableUICop", "doNotSignApps", "doNotRunTests", "cacheImage", "CreateRuntimePackages" | ForEach-Object {
+"installTestRunner", "installTestFramework", "installTestLibraries", "installPerformanceToolkit", "enableCodeCop", "enableAppSourceCop", "enablePerTenantExtensionCop", "enableUICop", "doNotSignApps", "doNotRunTests", "cacheImage", "CreateRuntimePackages" | ForEach-Object {
     $str = "False"
     if ($buildversion.PSObject.Properties.Name -eq $_) {
         $str = $buildversion."$_"

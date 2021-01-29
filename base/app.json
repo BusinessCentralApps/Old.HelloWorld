@@ -16,8 +16,8 @@
     "screenshots":  [
 
                     ],
-    "application":  "16.0.0.0",
-    "platform":  "16.0.0.0",
+    "application":  "17.0.0.0",
+    "platform":  "17.0.0.0",
     "idRanges":  [
                      {
                          "from":  50100,
@@ -25,5 +25,5 @@
                      }
                  ],
     "showMyCode":  true,
-    "runtime":  "4.0"
+    "runtime":  "6.0"
 }

@@ -12,7 +12,7 @@ codeunit 50133 "HelloWorld Test"
     begin
         CustList.OpenView();
         CustList.Close();
-        Assert.IsTrue(MessageDisplayed, 'Message was not displayed!');
+        if (not MessageDisplayed) then ERROR('Message was not displayed!');
     end;
 
     [MessageHandler]
@@ -22,6 +22,5 @@ codeunit 50133 "HelloWorld Test"
     end;
 
     var
-        Assert: Codeunit "Library Assert";
         MessageDisplayed: Boolean;
 }
