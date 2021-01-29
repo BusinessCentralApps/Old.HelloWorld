@@ -69,6 +69,8 @@ Run-AlPipeline @params `
     -pipelinename $pipelineName `
     -containerName $containerName `
     -imageName $imageName `
+    -bcAuthContext $authContext `
+    -environment $environmentName `
     -artifact $artifact.replace('{INSIDERSASTOKEN}',$insiderSasToken) `
     -memoryLimit $memoryLimit `
     -baseFolder $baseFolder `
