@@ -32,7 +32,6 @@
         {
             "version": "cloud",
             "artifact": "///us/Current",
-            "CreateRuntimePackages": true
         },
         {
             "version": "nextmajor",
