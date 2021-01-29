@@ -32,9 +32,10 @@ if ($refreshToken -and $environmentName) {
     }
     $countryCode = $artifact.Split('/')[3]
     New-BcEnvironment -bcAuthContext $authContext -environment $environmentName -countryCode $countrycode -environmentType "Sandbox" | Out-Null
+    Start-Sleep -Seconds 10
     $baseApp = Get-BcPublishedApps -bcAuthContext $authContext -environment $environmentName | Where-Object { $_.Name -eq "Base Application" }
     $artifact = Get-BCArtifactUrl `
-        -country $bcEnvironment.countryCode `
+        -country $countryCode `
         -version $baseApp.Version `
         -select Closest
     
