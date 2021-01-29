@@ -39,4 +39,7 @@ jobs:
 
       - name: Cleanup
         if: always()
+        env:
+          BcSaasRefreshToken: ${{ secrets.BcSaasRefreshToken }}
+          EnvironmentName: ${{ env.environmentName }}
         run: scripts\Cleanup.ps1
