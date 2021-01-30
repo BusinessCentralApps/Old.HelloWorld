@@ -100,8 +100,7 @@ Run-AlPipeline @params `
     -additionalCountries $additionalCountries `
     -buildArtifactFolder $buildArtifactFolder `
     -CreateRuntimePackages:$CreateRuntimePackages `
-    -appBuild $appBuild -appRevision $appRevision `
-    -PublishBcContainerApp { Param([Hashtable]$parameters) Publish-BcContainerApp -replacePackageId @parameters }
+    -appBuild $appBuild -appRevision $appRevision
 
 if ($environment -eq 'AzureDevOps') {
     Write-Host "##vso[task.setvariable variable=TestResults]$allTestResults"
