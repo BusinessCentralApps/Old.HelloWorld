@@ -101,10 +101,7 @@ Run-AlPipeline @params `
     -buildArtifactFolder $buildArtifactFolder `
     -CreateRuntimePackages:$CreateRuntimePackages `
     -appBuild $appBuild -appRevision $appRevision `
-    -PublishBcContainerApp { Param([Hashtable]$parameters) 
-        Replace-DependenciesInAppFile -containerName $parameters.containerName -path $parameters.AppFile -replacePackageId
-        Publish-BcContainerApp @parameters
-    }
+    -PublishBcContainerApp { Param([Hashtable]$parameters) Publish-BcContainerApp -replacePackageId @parameters }
 
 if ($environment -eq 'AzureDevOps') {
     Write-Host "##vso[task.setvariable variable=TestResults]$allTestResults"
