@@ -30,5 +30,6 @@
                      }
                  ],
     "showMyCode":  true,
-    "runtime":  "6.0"
+    "runtime":  "6.0",
+    "applicationInsightsKey": "00000000-0000-0000-0000-000000000000"
 }
