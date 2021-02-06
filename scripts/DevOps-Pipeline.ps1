@@ -36,6 +36,7 @@ if ($refreshToken -and $environmentName) {
         Start-Sleep -Seconds 10
         $baseApp = Get-BcPublishedApps -bcAuthContext $authContext -environment $environmentName | Where-Object { $_.Name -eq "Base Application" }
     } while (!($baseApp))
+    $baseapp | Out-Host
 
     $artifact = Get-BCArtifactUrl `
         -country $countryCode `
