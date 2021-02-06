@@ -43,7 +43,12 @@ if ($refreshToken -and $environmentName) {
         -version $baseApp.Version `
         -select Closest
     
-    Write-Host "Using Artifacts: $artifact"
+    if ($artifact) {
+        Write-Host "Using Artifacts: $artifact"
+    }
+    else {
+        throw "No artifacts available"
+    }
 }
 
 $params = @{}
