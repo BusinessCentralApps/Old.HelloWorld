@@ -15,13 +15,13 @@
                              "id":  "23de40a6-dfe8-4f80-80db-d70f83ce8caf",
                              "publisher":  "Microsoft",
                              "name":  "Test Runner",
-                             "version":  "16.0.0.0"
+                             "version":  "17.0.0.0"
                          },
                          {
-                             "id":  "00000000-0000-0000-0000-000000000001",
-                             "name":  "Default App Name",
-                             "publisher":  "Default Publisher",
-                             "version":  "2.0.0.0"
+                            "id":  "00000000-0000-0000-0000-000000000001",
+                            "publisher":  "Default Publisher",
+                            "name":  "Default App Name",
+                            "version":  "2.0.0.0"
                          }
                      ],
     "screenshots":  [
