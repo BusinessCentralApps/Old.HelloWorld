@@ -1,11 +1,16 @@
 ﻿Param(
     [Parameter(Mandatory=$false)]
-    [string] $version = "ci"
+    [string] $version = "ci",
+    [string] $containerName = "",
+    [switch] $reUseContainer,
+    [string] $sharedFolder = ""
 )
 
+$containerNameParam = $containerName
 $baseFolder = (Get-Item (Join-Path $PSScriptRoot "..")).FullName
 . (Join-Path $PSScriptRoot "Read-Settings.ps1") -environment 'Local' -version $version
 . (Join-Path $PSScriptRoot "Install-BcContainerHelper.ps1") -bcContainerHelperVersion $bcContainerHelperVersion -genericImageName $genericImageName
+if ($containerNameParam) { $containerName = $containerNameParam }
 
 if (("$vaultNameForLocal" -eq "") -or !(Get-AzKeyVault -VaultName $vaultNameForLocal)) {
     throw "You need to setup a Key Vault for use with local pipelines"
@@ -32,8 +37,10 @@ Run-AlPipeline `
     -artifact $artifact.replace('{INSIDERSASTOKEN}',$insiderSasToken) `
     -memoryLimit $memoryLimit `
     -baseFolder $baseFolder `
+    -sharedFolder $sharedFolder `
     -licenseFile $licenseFile `
     -installApps $installApps `
+    -installTestApps $installTestApps `
     -appFolders $appFolders `
     -testFolders $testFolders `
     -testResultsFile $testResultsFile `
@@ -46,4 +53,5 @@ Run-AlPipeline `
     -doNotRunTests `
     -useDevEndpoint `
     -updateLaunchJson "Local Sandbox" `
-    -keepContainer
+    -keepContainer `
+    -reUseContainer:$reUseContainer

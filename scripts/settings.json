@@ -2,6 +2,7 @@
     "name": "HelloWorld",
     "memoryLimit": "6G",
     "installApps": "",
+    "installTestApps": "",
     "previousApps": "https://businesscentralapps.azureedge.net/githubhelloworld/latest/apps.zip",
     "appFolders": "app,base",
     "testFolders": "test",
@@ -14,13 +15,13 @@
     "enableAppSourceCop": false,
     "enablePerTenantExtensionCop": true,
     "enableUICop": true,
-    "bcContainerHelperVersion": "dev",
+    "bcContainerHelperVersion": "preview",
     "additionalCountries": "",
     "vaultNameForLocal": "BuildVariables",
     "versions": [
         {
             "version": "ci",
-            "artifact": "//17.0.17126.17791/us",
+            "artifact": "//18.0.23013.24016/us",
             "cacheImage": true,
             "CreateRuntimePackages": true
         },
@@ -31,7 +32,6 @@
         },
         {
             "version": "cloud",
-            "bcContainerHelperVersion": "2.0.7",
             "artifact": "///us/Current"
         },
         {

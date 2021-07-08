@@ -6,15 +6,18 @@
 if ($bcContainerHelperVersion -eq "") { $bcContainerHelperVersion = "latest" }
 if ($bccontainerHelperVersion -eq "dev") { $bccontainerHelperVersion = "https://github.com/microsoft/navcontainerhelper/archive/dev.zip" }
 
-if ($bccontainerHelperVersion -like "https://*") {
+if ((Test-Path $bcContainerHelperVersion) -and (Test-Path (Join-Path $bcContainerHelperVersion "bcContainerHelper.ps1"))) {
+    $path = $bcContainerHelperVersion
+}
+elseif ($bccontainerHelperVersion -like "https://*") {
     $path = Join-Path $env:TEMP ([Guid]::NewGuid().ToString())
 }
 else {
     $bcbaseurl = "https://bccontainerhelper.azureedge.net/public"
     $versionsxml = [xml](New-Object System.Net.WebClient).DownloadString("$($bcbaseurl)?comp=list&restype=container")
-
-    $latestVersion = $versionsxml.EnumerationResults.ChildNodes.Blob.Name | Where-Object { $_ -ne "latest.zip" -and $_ -notlike "*preview*" } | ForEach-Object { $_.replace('.zip','') } | Sort-Object { [Version]$_ } | Select-Object -Last 1
-    $previewVersion = $versionsxml.EnumerationResults.ChildNodes.Blob.Name | Where-Object { $_ -like "*-preview*" } | ForEach-Object { $_.replace('.zip','') } | Sort-Object { [Version]($_.replace('-preview','.')) } | Select-Object -Last 1
+    
+    $latestVersion = $versionsxml.EnumerationResults.Blobs.Blob.Name | Where-Object { $_ -ne "latest.zip" -and $_ -notlike "*preview*" } | ForEach-Object { $_.replace('.zip','') } | Sort-Object { [Version]$_ } | Select-Object -Last 1
+    $previewVersion = $versionsxml.EnumerationResults.Blobs.Blob.Name | Where-Object { $_ -like "*-preview*" } | ForEach-Object { $_.replace('.zip','') } | Sort-Object { [Version]($_.replace('-preview','.')) } | Select-Object -Last 1
     if ([version]$latestVersion -ge [version]($previewVersion.split('-')[0])) {
         $previewVersion = $latestVersion
     }

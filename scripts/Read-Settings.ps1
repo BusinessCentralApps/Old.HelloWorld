@@ -5,6 +5,9 @@ Param(
     [string] $version = ""
 )
 
+$ErrorActionPreference = "Stop"
+$WarningPreference = "Continue"
+
 $agentName = ""
 if ($environment -ne 'Local') {
     $agentName = $ENV:AGENT_NAME
@@ -39,7 +42,7 @@ if ($environment -eq 'AzureDevOps') {
     Write-Host "##vso[task.setvariable variable=containerName]$containerName"
 }
 
-"installApps", "previousApps", "appSourceCopMandatoryAffixes", "appSourceCopSupportedCountries", "appFolders", "testFolders", "memoryLimit", "additionalCountries", "genericImageName", "vaultNameForLocal", "bcContainerHelperVersion" | ForEach-Object {
+"installApps", "installTestApps", "previousApps", "appSourceCopMandatoryAffixes", "appSourceCopSupportedCountries", "appFolders", "testFolders", "memoryLimit", "additionalCountries", "genericImageName", "vaultNameForLocal", "bcContainerHelperVersion" | ForEach-Object {
     $str = ""
     if ($buildversion.PSObject.Properties.Name -eq $_) {
         $str = $buildversion."$_"
@@ -64,6 +67,6 @@ if ($environment -eq 'AzureDevOps') {
 }
 
 $imageName = ""
-if ($cacheImage -and ("$AgentName" -ne "Hosted Agent" -and "$agentName" -ne "" -and "$AgentName" -notlike "Azure Pipelines*")) {
+if ($cacheImage -and ("$AgentName" -ne "Hosted Agent" -and "$AgentName" -notlike "Azure Pipelines*")) {
     $imageName = "bcimage"
 }
