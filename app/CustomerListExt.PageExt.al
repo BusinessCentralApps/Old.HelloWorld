@@ -6,8 +6,8 @@ pageextension 50101 CustomerListExt extends "Customer List"
 {
     trigger OnOpenPage();
     var
-        hellobase: Codeunit "Hello Base";
+        HelloBase: Codeunit HelloBase;
     begin
-        Message(hellobase.GetText());
+        Message(HelloBase.GetText());
     end;
 }
