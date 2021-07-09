@@ -1,4 +1,4 @@
-name: Test/Release
+name: Release To Fabrikam A/S
 
 on:
   workflow_dispatch:
