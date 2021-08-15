@@ -3,7 +3,7 @@
     "memoryLimit": "6G",
     "installApps": "",
     "installTestApps": "",
-    "previousApps": "https://businesscentralapps.azureedge.net/githubhelloworld/latest/apps.zip",
+    "previousApps": "https://businesscentralapps.blob.core.windows.net/githubhelloworld/latest/apps.zip",
     "appFolders": "app,base",
     "testFolders": "test",
     "installTestRunner": true,
