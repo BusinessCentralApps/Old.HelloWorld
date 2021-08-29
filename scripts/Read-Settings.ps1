@@ -12,7 +12,9 @@ $agentName = ""
 if ($environment -ne 'Local') {
     $agentName = $ENV:AGENT_NAME
 }
+Write-Host "'$environment'"
 Write-Host "'$agentName'"
+dir env:
 
 $settings = (Get-Content (Join-Path $PSScriptRoot "settings.json") | ConvertFrom-Json)
 if ("$version" -eq "")  {
