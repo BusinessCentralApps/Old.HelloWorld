@@ -15,7 +15,7 @@
     "enableAppSourceCop": false,
     "enablePerTenantExtensionCop": true,
     "enableUICop": true,
-    "bcContainerHelperVersion": "preview",
+    "bcContainerHelperVersion": "dev",
     "additionalCountries": "",
     "vaultNameForLocal": "BuildVariables",
     "versions": [
