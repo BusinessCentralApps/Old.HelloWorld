@@ -7,6 +7,6 @@ codeunit 50130 HelloBase
 
     procedure GetText() returnvalue: Text;
     begin
-        returnvalue := 'App Published: Hello World Base!';
+        returnvalue := 'App Published: xHello World Base!';
     end;
 }
